@@ -3,6 +3,21 @@ Experimental workflow for ATAC-seq data analysis from sequencing results (fastq)
 
 ## Steps
 
+## Usage
+* install Snakemake ([see tuto](https://github.com/mhebrard/smk-ATAC-seq/wiki/Setup))
+* test workflow
+```
+snakemake -np
+```
+* create DAG
+```
+snakemake --dag | dot -Tsvg > dag.svg
+```
+* run the workflow
+```
+snakemake
+```
+
 ## Stack
 * VirtualBox: Virtual machine (Windows)
 * Vagrant: VM manager (Windows)
