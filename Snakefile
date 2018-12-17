@@ -1,9 +1,11 @@
-# configfile: "config.yaml"
+# Load config
+configfile: "config/default.yaml"
 
+# Target rule
 rule all:
     input:
-        "results/sorted_reads/*.bai"
+        "results/merged/all.txt"
 
-include: "rules/bwa_map.smk"
-include: "rules/samtools_sort.smk"
-include: "rules/samtools_index.smk"
+# Includes
+include: "rules/extract.smk",
+include: "rules/merge.smk"
