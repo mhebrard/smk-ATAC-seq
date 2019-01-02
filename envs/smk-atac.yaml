@@ -1,0 +1,9 @@
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - snakemake-minimal =5.4.0
+  - python =3.5
+  - graphviz =2.40.1
+  - samtools =1.9
+  - bowtie2 =2.3.4.3

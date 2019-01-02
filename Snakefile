@@ -4,8 +4,7 @@ configfile: "config/default.yaml"
 # Target rule
 rule all:
     input:
-        "results/merged/all.txt"
+        "results/end/end.txt"
 
 # Includes
-include: "rules/extract.smk",
-include: "rules/merge.smk"
+include: "rules/bowtie2_index.smk"
