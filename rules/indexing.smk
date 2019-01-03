@@ -1,11 +1,11 @@
 import os
 
-indexdir = expand("{datadir}/{indexdir}", datadir=config['datadir'], indexdir=config['genomes'][config['genome']]['indexdir'])[0]
+indexdir = expand("{storedir}/{indexdir}", storedir=config['storedir'], indexdir=config['genomes'][config['genome']]['indexdir'])[0]
 outdir = expand("results/index/{genome}", genome=config['genome'])[0]
 
 # If indexdir exists => copy index in local
 if (os.path.exists(indexdir)):
-    rule dl_index:
+    rule download_index:
         input: indexdir
         output: directory(outdir)
         shell: """
@@ -16,7 +16,7 @@ scp -r {input} {output} \
 else:
     rule create_index:
         input:
-            config['fasta'] if config['fasta'] else expand("{datadir}/{fasta}", datadir=config['datadir'], fasta=config['genomes'][config['genome']]['fasta'])
+            config['fasta'] if config['fasta'] else expand("{storedir}/{fasta}", storedir=config['storedir'], fasta=config['genomes'][config['genome']]['fasta'])
         output: directory(outdir)
         threads: config['threads']
         shell: """
