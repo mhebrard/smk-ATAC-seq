@@ -1,12 +1,17 @@
 rule bowtie2_index:
-    input: expand("{datadir}/{fasta}", datadir=config['datadir'], fasta=config['genomes'][config['genome']]['fasta'])
+    input:
+        config['fasta'] if config['fasta'] else expand("{datadir}/{fasta}", datadir=config['datadir'], fasta=config['genomes'][config['genome']]['fasta'])
     output:
-        directory("results/index"),
-        "results/end/end.txt"
+        "results/index/{genome}.1.bt2",
+        "results/index/{genome}.2.bt2",
+        "results/index/{genome}.3.bt2",
+        "results/index/{genome}.4.bt2",
+        "results/index/{genome}.rev.1.bt2",
+        "results/index/{genome}.rev.2.bt2"
+    threads: config['threads']
     shell: """
     bowtie2-build \
-    --threads {config[threads]}
-    {input} \
-    {output[0]}/{config[genome]}
-    touch {output[1]}
+    --threads {threads} \
+    {input}
+    results/index/{wildcards.genome}
     """
