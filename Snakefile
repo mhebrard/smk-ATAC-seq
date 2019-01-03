@@ -4,8 +4,9 @@ configfile: "config/default.yaml"
 # Target rule
 rule all:
     input:
-        "results/merged/all.txt"
+        expand("results/index/{genome}", genome = config['genome'])
+    output:
+        touch("results/end/end.log")
 
 # Includes
-include: "rules/extract.smk",
-include: "rules/merge.smk"
+include: "rules/indexing.smk"
