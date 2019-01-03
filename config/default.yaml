@@ -1,0 +1,12 @@
+profile: "imcb"
+threads: 20
+fasta: false
+genomes:
+  hg38:
+    fasta: "Genomes/hg38/GENCODE/GRCh38.primary_assembly.genome.fa"
+    gtf: "Genomes/hg38/GENCODE/gencode.v29.annotation.gtf"
+    indexdir: "Genomes/hg38/indexes/Bowtie-2.3.4.3-index"
+  mm10:
+    fasta: "Genomes/mm10/GENCODE/GRCm38.primary_assembly.genome.fa"
+    gtf: "Genomes/mm10/GENCODE/gencode.vM19.annotation.gtf"
+    indexdir: "Genomes/mm10/indexes/Bowtie-2.3.4.3-index"
